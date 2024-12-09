@@ -1,5 +1,9 @@
 # Python Terminal RPG-like Game
 
+> ### 🚧 Project still under development!
+> 
+> Every monday commiting new features!
+
 Welcome to the **Python Terminal RPG-like Game** project! This project offers an adventurous RPG-like experience right
 in your terminal. Join us on a journey filled with mystery and danger where every decision could mean the difference
 between victory and defeat.
