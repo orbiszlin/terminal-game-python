@@ -1,9 +1,20 @@
+import random
+
+global hp, xp, money
 
 hp = 100
 xp = 0
+money = 0
+
+def add_hp(amount):
+    global hp
+    hp += amount
+
+    if hp > 100:
+        hp = 100
 
 def stats():
-    print(f"### HP {hp} ### XP {xp} ###")
+    print(f"### HP {hp} ### XP {xp} ### {money} ###")
 
 def welcome_screen():
     print("########################")
@@ -15,6 +26,7 @@ def welcome_screen():
     print("Cokoliv jiného - ukončit hru")
 
 def tavern():
+    global hp, money
     print("-----------------------")
     print("      Jsi v krčmě      ")
     print("-----------------------")
@@ -28,11 +40,26 @@ def tavern():
 
     choice = input("Vyber z menu: ")
     if int(choice) == 1:
-        print("Koupil jsis báječné pivo")
+        if money < 20:
+            print("Nemáš dostatek peněž")
+        else:
+            print("Koupil jsis báječné pivo")
+            money -= 20
+            add_hp(5)
     elif int(choice) == 2:
-        print("Koupil jsis hnusnou polévku")
+        if money < 35:
+            print("Nemáš dostatek peněž")
+        else:
+            print("Koupil jsis hnusnou polévku")
+            money -= 35
+            add_hp(6)
     elif int(choice) == 3:
-        print("Dostal jsi před sebe půlku divočáka")
+        if money < 80:
+            print("Nemáš dostatek peněž")
+        else:
+            print("Dostal jsi před sebe půlku divočáka")
+            money -= 80
+            add_hp(50)
 
     stats()
     crossroad()
@@ -49,13 +76,32 @@ def crossroad():
 
     choice = input("Vyber z menu: ")
     if int(choice) == 1:
-        print("Budeš trénovat")
+        trainig_course()
     elif int(choice) == 2:
         tavern()
     elif int(choice) == 3:
         print("Budeš bojovat")
     else:
         crossroad()
+
+
+def trainig_course():
+    print("-----------------------")
+    print("Jsi na tréninkovém hřisti")
+    print("-----------------------")
+    print("\nVyber si trénink:")
+    print("1 - Útok")
+    print("2 - Obrana")
+
+    # Úplně nahoře je vložená knihovna
+    # import random
+    random_chance = random.randint(1, 100)
+
+    if random_chance < 50:
+        print("vyhral jsi")
+    else:
+        print("prohral jsi")
+
 
 
 def main():
